@@ -60,3 +60,18 @@ img{
     display: inherit;
   
 }
+/* Test */
+.dashed-shadow{
+  position:relative;
+  left: 48px;
+  display:inline-block;
+  color:#ba9186;
+  right: 10px;
+}
+
+.hello{
+  font-family:'Cookie',cursive;
+  font-size:35pt;
+}
+
+

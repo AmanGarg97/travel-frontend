@@ -12,7 +12,7 @@ class NewsFeed extends Component {
             return (<div>Loading . . .</div>)
         } else {
             return data.NewsFeed.map(news => {
-                console.log(news.urlToImage)
+                // console.log(news.urlToImage)
                 return (
                     // <div className="box-field">
                     //     <img src={news.urlToImage} alt=""/>

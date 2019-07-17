@@ -1,27 +1,33 @@
 import React, { Component } from 'react';
-import SearchField from "react-search-field";
+// import SearchInput, {createFilter} from 'react-search-input'
+import ReactSearchBox from 'react-search-box'
 
-
-
-
-
-
+const data = [
+    {
+        key: 'bangalore',
+        value: 'Bangalore',
+    },
+    {
+        key: 'Delhi',
+        value: 'Delhi',
+    },
+];
 
 class SearchBar extends Component {
-
 
     render() {
 
         return (
             <div>
-
-                <SearchField
-                    placeholder="Search..."
-                    // onChange={onChange}
-                    searchText="This is initial search text"
-                    classNames="test-class"
+                <ReactSearchBox
+                    placeholder="Discover Incredible Places"
+                    value="Doe"
+                    data={data}
+                    callback={record => console.log(record)}
+                    inputBoxBorderColor="black"
                 />
             </div>
+
         );
     }
 

@@ -5,7 +5,7 @@ import { Card, Button } from 'react-bootstrap';
 
 export default class CardTemplate extends Component {
   render() {
-    console.log(this.props.src)
+    // console.log(this.props.src)
     return (
       <div id="haah">
         <Card style={{ width: '15rem', display: 'inline-block' }}>

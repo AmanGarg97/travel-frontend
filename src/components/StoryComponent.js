@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo'
 import StoryTemplate from './StoryTemplate'
 import { getStoryQuery } from '../queries/query'
 // import "react-responsive-carousel/lib/styles/carousel.min.css";
-// import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from 'react-responsive-carousel';
 
 class StoryComponent extends Component {
   displayStory() {
@@ -13,7 +13,10 @@ class StoryComponent extends Component {
     } else {
       return data.allStories.map(story => {
         return (
-          <StoryTemplate key={story.id} storyTitle={story.title} subStory={story.subStory} />
+          <div>
+            <StoryTemplate key={story.id} storyTitle={story.title} subStory={story.subStory} />
+          </div>
+
 
         )
       }
@@ -25,7 +28,12 @@ class StoryComponent extends Component {
     return (
       <span className='box-field'>
         <h2 className="heading">Story Feed</h2>
-        {this.displayStory()}
+        <Carousel
+         showThumbs={false}
+        >
+          {this.displayStory()}
+        </Carousel>
+
 
       </span>
     )
