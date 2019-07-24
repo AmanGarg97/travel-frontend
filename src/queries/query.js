@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost';
 
-const addStoryQuery = gql`
+const addStoryQuery2 = gql`
 {
   allStories{
     title
@@ -27,6 +27,8 @@ const getVideoQuery = gql`
 query GetVideo($query : String!,$limit:Int!){
     VideoFeed(query: $query , limit : $limit){
       videoId
+      title
+      url
     }
 }
 `
@@ -43,12 +45,19 @@ query GetNews($query : String! , $limit : Int!){
       
 }
 `
-
+const addStoryQuery = gql`
+mutation($title: String! , $description: String!,$tags: String!,$subStory:[CreateUserInput]!){
+  addStory(title: $title,description: $description,tags:$tags,subStory: $subStory){
+    title
+  }
+}
+`
 
 
 export {
-    addStoryQuery,
-    getStoryQuery,
-    getVideoQuery,
-    getNewsQuery
+  addStoryQuery,
+  addStoryQuery2,
+  getStoryQuery,
+  getVideoQuery,
+  getNewsQuery
 }

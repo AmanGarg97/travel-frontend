@@ -27,7 +27,7 @@ class NewsFeed extends Component {
     render() {
         return (
             <div>
-                <h2 className="heading">News Feed</h2>
+                <h2 className="dashed-shadow hello">News Feed</h2>
                 {this.getNews()}
             </div>
 

@@ -2,20 +2,15 @@ import React, { Component } from 'react';
 // import ReactPlayer from 'react-player'
 import { getVideoQuery } from '../queries/query'
 import { graphql } from 'react-apollo'
-import YouTube from 'react-youtube';
-// import CardTemplate from './CardTemplate'
+import CardTemplate from './CardTemplate'
 
 
-const divStyle = {
-    display: 'inline'
-}
 const opts = {
     height: '80',
     width: '120',
     playerVars: { // https://developers.google.com/youtube/player_parameters
-        autoplay: 1,
+        autoplay: 1
     },
-    display: 'inline'
 };
 
 class VideoFeed extends Component {
@@ -28,30 +23,30 @@ class VideoFeed extends Component {
             )
         } else {
             return data.VideoFeed.map(video => {
+                console.log(video.url)
                 return (
-                    <YouTube
-                        videoId={video.videoId}
-                        opts={opts}
-                        onReady={this._onReady}
-                    />
-
+                    // <div>
+                    //     <YouTube
+                    //         videoId={video.videoId}
+                    //         opts={opts}
+                    //         onReady={this._onReady}
+                    //         controls='0'
+                    //     />
+                    //     <h4>{video.title}</h4>
+                    // </div>
+                    <CardTemplate src={video.url} link={video.url} title={video.title}/>
                 )
             }
             )
         }
     }
     render() {
-        // console.log(this.props.data.VideoFeed)
-
-
         return (
-            <div style={divStyle}>
-                <h2 className="heading">Video Feed</h2>
-                {/* <ReactPlayer url='https://www.youtube.com/embed/4TEKZxO8TLI' playing width="100px" height="80px"/> */}
-
+            <div className="video-div">
+                <h2 className="dashed-shadow hello">Video Feed</h2>
 
                 {this.getVideos()}
-                {/* <CardTemplate/> */}
+
             </div>
 
         );
@@ -62,7 +57,7 @@ export default graphql(getVideoQuery, {
     options: (props) => {
         return {
             variables: {
-                query: 'delhi',
+                query: 'Bangalore Travel Vlog',
                 limit: 2
             }
         }

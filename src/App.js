@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
+import { Route } from 'react-router-dom'
+import PlayerTest from './components/PlayerTest'
 
 //components
 import StoryComponent from './components/StoryComponent'
-// import VideoFeed from './components/VideoFeed'
-import NewsFeed from './components/NewsFeed'
-// import CardTemplate from './components/CardTemplate'
+// import NewsFeed from './components/NewsFeed'
 import SearchBar from './components/SearchBar'
-// import Test from './components/test'
-// import SliderTest from './components/SliderTest'
+import DashBoard from './components/content-board/Dashboard'
+import VideoFeed from './components/VideoFeed';
 
 
 //apollo client setup
 const client = new ApolloClient({
   uri: 'http://localhost:2000/graphql',
 })
-
 
 class App extends Component {
 
@@ -25,17 +24,20 @@ class App extends Component {
     return (
       <div className='box-field'>
         <ApolloProvider client={client}>
-          <SearchBar />
-          {/* <h2>Trending Stories</h2> */}
-          <span className="dashed-shadow hello">Trending Stories!</span>
-          <br />
-          <img src={require("./images/background.jpg")} width="100%" height="50%" alt="sample"/>
-          <StoryComponent />
-          {/* <VideoFeed/> */}
-          <NewsFeed />
-          {/* <SliderTest/> */}
-        </ApolloProvider>
+          <div className="">
+            <Route exact path="/" component={SearchBar} />
+            <Route exact path="/" component={StoryComponent} />
 
+            <br />
+            {/* <img src={require("./images/background.jpg")} width="100%" height="50%" alt="sample"/> */}
+            {/* <Route exact path="/" component={StoryComponent} /> */}
+            {/* <Route exact path="/" component={VideoFeed} /> */}
+
+            {/* <VideoFeed/> */}
+            {/* <NewsFeed /> */}
+          </div>
+          <Route exact path="/dashboard" component={DashBoard} />
+        </ApolloProvider>
       </div>
 
     );

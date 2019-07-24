@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo'
-import {addStoryQuery} from '../queries/query'
+import {addStoryQuery2} from '../queries/query'
 
 class AddStory extends Component {
     constructor(props) {
@@ -47,4 +47,4 @@ class AddStory extends Component {
     }
 }
 
-export default graphql(addStoryQuery)(AddStory);
+export default graphql(addStoryQuery2)(AddStory);
