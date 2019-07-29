@@ -1,8 +1,13 @@
 .card-container {
-    /* display: flex; */
-    /* flex-flow: row; */
+    flex-flow: row;
     justify-content: center;
     align-items: center;
-    /* width: 100%; */
+    width: 100%;
     box-sizing: border-box;
+    display: flex;
+    overflow-x: auto
+
+}
+.news-header-background div{
+    background-position: 0;
 }

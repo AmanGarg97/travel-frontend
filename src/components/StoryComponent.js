@@ -13,7 +13,7 @@ class StoryComponent extends Component {
     } else {
       return data.allStories.map(story => {
         return (
-          <div className="card--content" key={story.id}>
+          <div id="card--content" key={story.id}>
             <StoryTemplate key={story.id} storyTitle={story.title} subStory={story.subStory} />
           </div>
         )
@@ -27,7 +27,7 @@ class StoryComponent extends Component {
         <div className="heading-div">
           <div className="hello">Trending Stories!</div>
         </div>
-        <section className="card">
+        <section id="card">
           {this.displayStory()}
         </section>
       </div>

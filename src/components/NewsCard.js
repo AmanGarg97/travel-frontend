@@ -4,15 +4,19 @@ import './NewsCard.css'
 
 class NewsCard extends Component {
 
+    constructor(props){
+        super(props)
+    }
+
     render() {
         return (
             <div className='card-container'>
                 <NewsHeaderCard
-                    href='https://github.com/nekonee'
-                    thumbnail='https://i.imgur.com/rLFk5nd.jpg'
-                    title='Polish mountaineers on the top'
-                    author='Daily Sport'
-                    date='Feb 2, 2018'
+                    href={this.props.link}
+                    thumbnail={this.props.src}
+                    title={this.props.title}
+                    author={this.props.author}
+                    date='July 29, 2019'
                 />
             </div>
         );

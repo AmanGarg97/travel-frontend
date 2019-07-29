@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-// import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player'
 import { getVideoQuery } from '../queries/query'
 import { graphql } from 'react-apollo'
 import CardTemplate from './CardTemplate'
+import YouTube from 'react-youtube';
+import ReactYoutubeCard from './ReactYoutubeCard'
+
 
 
 const opts = {
@@ -23,18 +26,37 @@ class VideoFeed extends Component {
             )
         } else {
             return data.VideoFeed.map(video => {
-                console.log(video.url)
+                console.log(video)
                 return (
                     // <div>
                     //     <YouTube
                     //         videoId={video.videoId}
                     //         opts={opts}
                     //         onReady={this._onReady}
-                    //         controls='0'
+                    
                     //     />
-                    //     <h4>{video.title}</h4>
+                    //     <h6>{video.title}</h6>
                     // </div>
-                    <CardTemplate src={video.url} link={video.url} title={video.title}/>
+                    // <CardTemplate src={video.url} link={video.url} title={video.title} />
+                    <ReactYoutubeCard videoId={video.videoId}/>
+                //     <div
+                //     className="video"
+                //     // style={{
+                //     //   position: "relative",
+                //     //   paddingBottom: "56.25%" /* 16:9 */,
+                //     //   paddingTop: 25,
+                //     //   height: 0
+                //     // }}
+                //   >
+                //     <iframe
+                //       style={{
+                //         width: "100%",
+                //         height: "100%"
+                //       }}
+                //       src={`https://www.youtube.com/embed/c6t3bW7kx6E`}
+                //       frameBorder="0"
+                //     />
+                //   </div>
                 )
             }
             )
@@ -44,8 +66,11 @@ class VideoFeed extends Component {
         return (
             <div className="video-div">
                 <h2 className="dashed-shadow hello">Video Feed</h2>
+                <div className="video-div">
+                    {this.getVideos()}
 
-                {this.getVideos()}
+                </div>
+
 
             </div>
 

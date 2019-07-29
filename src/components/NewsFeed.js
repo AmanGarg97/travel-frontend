@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo'
 import { getNewsQuery } from '../queries/query'
-import CardTemplate from './CardTemplate'
+import NewsCard from './NewsCard';
 
 
 class NewsFeed extends Component {
@@ -18,7 +18,9 @@ class NewsFeed extends Component {
                     //     <img src={news.urlToImage} alt=""/>
                     //     <a href={news.url}><h4>{news.title}</h4></a>
                     // </div>
-                    <CardTemplate src={news.urlToImage} link={news.url} title={news.title}/>
+                    // <CardTemplate src={news.urlToImage} link={news.url} title={news.title}/>
+
+                    <NewsCard src={news.urlToImage} link={news.url} title={news.title} description={news.description} author={news.author} />
                 )
             }
             )
@@ -26,9 +28,14 @@ class NewsFeed extends Component {
     }
     render() {
         return (
+
             <div>
                 <h2 className="dashed-shadow hello">News Feed</h2>
-                {this.getNews()}
+                <div className="news-div">
+                    {this.getNews()}
+
+                </div>
+
             </div>
 
         );
@@ -39,7 +46,7 @@ export default graphql(getNewsQuery, {
     options: (props) => {
         return {
             variables: {
-                query: 'bangalore',
+                query: 'Travel',
                 limit: 2
             }
         }

@@ -10,14 +10,26 @@ import StoryComponent from './components/StoryComponent'
 import SearchBar from './components/SearchBar'
 import DashBoard from './components/content-board/Dashboard'
 import VideoFeed from './components/VideoFeed';
+import MyStory from './components/MyStory'
+import MyCard from './components/MyCard'
+import Bar from './components/ProgressBar'
+// import NewsCard from './components/NewsCard';
+import NewsFeed from './components/NewsFeed';
 
+var value = '';
 
 //apollo client setup
 const client = new ApolloClient({
   uri: 'http://localhost:2000/graphql',
 })
-
 class App extends Component {
+
+  
+  getSearchedValue(val){
+    value = val;
+    console.log(value)
+  }
+
 
 
   render() {
@@ -25,8 +37,14 @@ class App extends Component {
       <div className='box-field'>
         <ApolloProvider client={client}>
           <div className="">
-            <Route exact path="/" component={SearchBar} />
-            <Route exact path="/" component={StoryComponent} />
+            {/* <Route exact path="/" function={this.getSearchedValue} component={SearchBar}  /> */}
+            <Route exact path="/" render={()=><SearchBar  function={this.getSearchedValue}/>}/>
+
+            {/* <Route exact path="/" component={StoryComponent} /> */}
+            {/* <Route exact path="/" component={VideoFeed} /> */}
+
+            {/* <Route exact path="/" component={NewsFeed} /> */}
+
 
             <br />
             {/* <img src={require("./images/background.jpg")} width="100%" height="50%" alt="sample"/> */}
